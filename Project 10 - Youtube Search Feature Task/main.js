@@ -7,6 +7,9 @@ const feed = document.querySelector('.feed');
 let selected = "All"
 const tabs = document.querySelector('#tabs');
 let filteredData = []
+let query = ''
+const searchBar = document.querySelector('#searchBar');
+
 
 
 // Filtering videos data on basis of selected tab
@@ -17,6 +20,14 @@ function filter() {
         filteredData = videosData.filter(
             (video) => video.category === selected
         );
+    }
+
+    if(query.trim() != ""){
+        console.log("hello")
+        filteredData = filteredData.filter((video)=>{
+            let q = query.toLowerCase()
+            return video.title.toLowerCase().includes(q)
+        })
     }
     renderVideos(feed, filteredData)
 }
@@ -41,13 +52,11 @@ function createTabs() {
 
 }
 
-function showResultOfQuery(){
-    videosData.forEach((video)=>{
-        console.log(video.title)
-    })
-    console.log(getSearchQuery())
-}
+searchBar.addEventListener('input', (e)=>{
+    query = e.target.value;
+    console.log(query)
+    filter()
+})
 
 createTabs()
 filter()
-showResultOfQuery(getSearchQuery)
