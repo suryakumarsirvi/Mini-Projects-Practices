@@ -1,19 +1,20 @@
 import { categories } from './src/db/tabsData.js'
 import { videosData } from './src/db/videoData.js'
 import renderVideos from './src/utils/renderVideos.js'
-import getSearchQuery from './src/utils/searchVideos.js';
+import voiceSearch from './src/utils/voiceSearch.js';
 const feed = document.querySelector('.feed');
+const searchBar = document.querySelector('#searchBar');
+const tabs = document.querySelector('#tabs');
 
 let selected = "All"
-const tabs = document.querySelector('#tabs');
-let filteredData = []
-let query = ''
-const searchBar = document.querySelector('#searchBar');
+let filteredData = [];
+let query = '';
 
 
-
-// Filtering videos data on basis of selected tab
+// Filtering data
 function filter() {
+    // Filtering videos data on basis of selected tab
+
     if (selected === "All") {
         filteredData = [...videosData];
     } else {
@@ -21,14 +22,17 @@ function filter() {
             (video) => video.category === selected
         );
     }
-
-    if(query.trim() != ""){
-        console.log("hello")
-        filteredData = filteredData.filter((video)=>{
-            let q = query.toLowerCase()
-            return video.title.toLowerCase().includes(q)
-        })
+    
+    // Filtering videos data on basis of user query
+    if (query.trim() !== '') {
+        filteredData = videosData.filter(
+            (video) => {
+                let q = query.toLowerCase()
+                return video.title.toLowerCase().includes(q) || video.channel.toLowerCase().includes(q);
+            }
+        );
     }
+
     renderVideos(feed, filteredData)
 }
 
@@ -52,11 +56,15 @@ function createTabs() {
 
 }
 
-searchBar.addEventListener('input', (e)=>{
-    query = e.target.value;
-    console.log(query)
-    filter()
-})
+function searchUserQuery() {
+    searchBar.addEventListener('input', (e) => {
+        query = e.target.value;
+        filter()
+    })
+}
 
 createTabs()
+searchUserQuery()
 filter()
+voiceSearch()
+
