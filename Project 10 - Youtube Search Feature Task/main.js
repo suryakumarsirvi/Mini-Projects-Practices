@@ -32,7 +32,6 @@ function filter() {
             }
         );
     }
-
     renderVideos(feed, filteredData)
 }
 
@@ -53,7 +52,6 @@ function createTabs() {
         })
         tabs.appendChild(btn)
     })
-
 }
 
 function searchUserQuery() {

@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #121212;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background 0.3s;
+}
+
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+#drop-area {
+  border: 2px dashed #fff;
+  border-radius: 12px;
+  padding: 40px 20px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  position: relative;
+}
+
+#drop-area.dragover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.02);
+}
+
+#drop-area p {
+  pointer-events: none;
+  z-index: 2;
+  position: relative;
+}
+
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  margin: -25px 0 0 -25px;
+  border: 2px solid #303030;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 1;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#preview-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  transition: all 0.3s;
+}
+
+canvas {
+  max-width: 100%;
+  border-radius: 12px;
+  transition: all 0.3s;
+  opacity: 0;
+}
+
+canvas.show {
+  opacity: 1;
+}
+
+#buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #3b3b3b;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  transition: all 0.3s;
+}
+
+button:disabled {
+  background: #55555500;
+  border: 0.1px solid #222222;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  transform: scale(1.05);
+}

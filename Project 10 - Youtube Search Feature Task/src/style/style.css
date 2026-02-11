@@ -349,7 +349,7 @@ main {
 }
 
 #micContainer {
-  /* display: none; */
+  display: none;
   position: fixed;
   height: 100vh;
   width: 100vw;
@@ -368,18 +368,14 @@ main {
   border-radius: 10px;
   width: 40em;
   top: 20px;
+  overflow: hidden;
   left: 40em;
-}
-
-.micCard h1 {
-  font-weight: 500;
-  margin: 24px 6px;
 }
 
 .micCard img {
   width: 100%;
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  object-position: top;
 }
 
 #cancelMicCard {
@@ -387,6 +383,6 @@ main {
   top: 10px;
   right: 10px;
   font-size: 24px;
-  color: #5e0000;
+  color: #ffffff;
   cursor: pointer;
 }

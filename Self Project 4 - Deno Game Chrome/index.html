@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="https://i.pinimg.com/1200x/b8/2c/d3/b82cd37e408c6d12aa1d286a1746a13c.jpg" type="image/x-icon">
+  <title>Background Remover</title>
+  <link rel="stylesheet" href="./src/style/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Background Remover</h1>
+    
+    <div id="drop-area">
+      <p>Drag & Drop or Click to Upload</p>
+      <input type="file" id="fileElem" accept="image/*" hidden>
+      <div id="loader" class="hidden"></div>
+    </div>
+
+    <div id="preview-container">
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <div id="buttons">
+      <button id="downloadNormal" disabled>Download</button>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
