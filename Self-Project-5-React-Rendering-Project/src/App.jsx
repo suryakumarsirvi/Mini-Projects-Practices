@@ -37,6 +37,7 @@ const App = () => {
       time: 0,
       running: false,
     };
+    
 
     setTasks((prev) => [...prev, newTask]);
   }, []);
